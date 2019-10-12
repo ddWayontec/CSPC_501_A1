@@ -41,4 +41,13 @@ public class junitTests {
         assertEquals(500, customer.getInvestment().getBalance(), 0);
         assertEquals(500, customer.accountsTotal(), 0);
     }
+
+    @Test
+    public void createCustomerGetDataShouldSucceed() {
+        Customer customer = new Customer(1, "John", "Doe", "101 Ave",
+                "t1t1t1", "4031011001", "johndoe@gmail.com", "m", 636);
+
+        assertEquals("John", customer.getfName());
+        assertEquals(636, customer.getCreditCardScore());
+    }
 }
