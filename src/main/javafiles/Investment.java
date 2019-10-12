@@ -1,11 +1,12 @@
 package main.javafiles;
 
+import java.util.Random;
+
 public class Investment {
 
     double balance;
     int accountNumber;
     String homeBranch;
-    InvestmentCalculator investmentCalculator;
     double interestRate;
     Customer customer;
 
@@ -13,25 +14,24 @@ public class Investment {
         this.accountNumber = accountNumber;
         this.homeBranch = homeBranch;
         this.balance = initialDeposit;
-        investmentCalculator = new InvestmentCalculator();
         setInterestRateBasedOnRiskLevel(riskLevel);
     }
 
     public void applyInterestRate() {
         //remove investmentCalculator.java and move methods to here
-        double interestApplied = investmentCalculator.calculateInterestApplied(getBalance(), getInterestRate());
+        double interestApplied = calculateInterestApplied(getBalance(), getInterestRate());
         depositFunds(interestApplied);
     }
 
     public void setInterestRateBasedOnRiskLevel(RiskLevel riskLevel) {
         if (riskLevel == RiskLevel.High) {
-            this.interestRate = investmentCalculator.calculateHighRiskInterestRate();
+            this.interestRate = calculateHighRiskInterestRate();
         }
         else if (riskLevel == RiskLevel.Medium) {
-            this.interestRate = investmentCalculator.calculateMediumRiskInterestRate();
+            this.interestRate = calculateMediumRiskInterestRate();
         }
         else if (riskLevel == RiskLevel.Low) {
-            this.interestRate = investmentCalculator.calculateLowRiskInterestRate();
+            this.interestRate = calculateLowRiskInterestRate();
         }
     }
 
@@ -66,6 +66,25 @@ public class Investment {
 
     public String getHomeBranch() {
         return homeBranch;
+    }
+
+    public double calculateInterestApplied(double balance, double interestRate) {
+        return (balance * interestRate);
+    }
+
+    public double calculateLowRiskInterestRate() {
+        Random randomNum = new Random();
+        return (randomNum.nextDouble() - 0.5) * 5;
+    }
+
+    public double calculateMediumRiskInterestRate() {
+        Random randomNum = new Random();
+        return (randomNum.nextDouble() - 0.5) * 10;
+    }
+
+    public double calculateHighRiskInterestRate() {
+        Random randomNum = new Random();
+        return (randomNum.nextDouble() - 0.5) * 20;
     }
 
 }

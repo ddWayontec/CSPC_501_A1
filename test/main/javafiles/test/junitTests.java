@@ -15,11 +15,22 @@ public class junitTests {
     }
 
     @Test
-    public void createCustomerWithChequingShouldSucceed() {
+    public void createCustomerWithChequingsShouldSucceed() {
         Customer customer = new Customer(1, "John", "Doe", "101 Ave",
                 "t1t1t1", "4031011001", "johndoe@gmail.com", "m", 636);
         customer.createChequings(500, 1, "downtown");
+
         assertEquals(500, customer.getChequings().getBalance(), 0);
+        assertEquals(500, customer.accountsTotal(), 0);
+    }
+
+    @Test
+    public void createCustomerWithSavingsShouldSucceed() {
+        Customer customer = new Customer(1, "John", "Doe", "101 Ave",
+                "t1t1t1", "4031011001", "johndoe@gmail.com", "m", 636);
+        customer.createSavings(500, 1, "downtown");
+
+        assertEquals(500, customer.getSavings().getBalance(), 0);
         assertEquals(500, customer.accountsTotal(), 0);
     }
 
