@@ -14,8 +14,7 @@ public class Investment {
         this.homeBranch = homeBranch;
         this.balance = initialDeposit;
         investmentCalculator = new InvestmentCalculator();
-        //calculate and set interest rate of investment based on risk level
-        rLvl(riskLevel);
+        setInterestRateBasedOnRiskLevel(riskLevel);
     }
 
     public void applyInterestRate() {
@@ -24,15 +23,14 @@ public class Investment {
         depositFunds(interestApplied);
     }
 
-    //set risk level interest using main.RiskLevel enum
-    public void rLvl(RiskLevel rl) {
-        if (rl == RiskLevel.High) {
+    public void setInterestRateBasedOnRiskLevel(RiskLevel riskLevel) {
+        if (riskLevel == RiskLevel.High) {
             this.interestRate = investmentCalculator.calculateHighRiskInterestRate();
         }
-        else if (rl == RiskLevel.Medium) {
+        else if (riskLevel == RiskLevel.Medium) {
             this.interestRate = investmentCalculator.calculateMediumRiskInterestRate();
         }
-        else if (rl == RiskLevel.Low) {
+        else if (riskLevel == RiskLevel.Low) {
             this.interestRate = investmentCalculator.calculateLowRiskInterestRate();
         }
     }
