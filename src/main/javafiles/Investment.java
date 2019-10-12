@@ -2,13 +2,9 @@ package main.javafiles;
 
 import java.util.Random;
 
-public class Investment {
+public class Investment extends Account {
 
-    double balance;
-    int accountNumber;
-    String homeBranch;
     double interestRate;
-    Customer customer;
 
     public Investment(int accountNumber, String homeBranch, double initialDeposit, RiskLevel riskLevel) {
         this.accountNumber = accountNumber;
@@ -37,35 +33,6 @@ public class Investment {
 
     public double getInterestRate() {
         return interestRate;
-    }
-
-    //data class refactor - move to account.java
-    public void depositFunds(double amount) {
-        this.balance += amount;
-    }
-
-    public void withdrawFunds(double amount) {
-        this.balance -= amount;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setAccountNumber(int accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public int getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setHomeBranch(String homeBranch) {
-        this.homeBranch = homeBranch;
-    }
-
-    public String getHomeBranch() {
-        return homeBranch;
     }
 
     public double calculateInterestApplied(double balance, double interestRate) {

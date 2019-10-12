@@ -10,9 +10,9 @@ public class Customer {
     String gender;
     int customerId;
     int creditCardScore;
-    Chequings chequings = null;
-    Savings savings = null;
-    Investment investment = null;
+    Account chequings = null;
+    Account savings = null;
+    Account investment = null;
 
 
     public Customer(int customerId, String fName, String lName, String address, String postalCode, String phoneNumber, String email,
@@ -42,36 +42,36 @@ public class Customer {
         return total;
     }
 
-    public Chequings createChequings(double balance, int accountNumber, String homeBranch) {
+    public Account createChequings(double balance, int accountNumber, String homeBranch) {
         if (chequings == null) {
             chequings = new Chequings(balance, accountNumber, homeBranch, this);
         }
         return chequings;
     }
 
-    public Chequings getChequings() {
+    public Account getChequings() {
         return this.chequings;
     }
 
-    public Savings createSavings(double balance, int accountNumber, String homeBranch) {
+    public Account createSavings(double balance, int accountNumber, String homeBranch) {
         if ( savings == null) {
             savings = new Savings(balance, accountNumber, homeBranch, this);
         }
         return savings;
     }
 
-    public Savings getSavings() {
+    public Account getSavings() {
         return this.savings;
     }
 
-    public Investment createInvestment(double balance, int accountNumber, String homeBranch, RiskLevel riskLevel) {
+    public Account createInvestment(double balance, int accountNumber, String homeBranch, RiskLevel riskLevel) {
         if (investment == null) {
             investment = new Investment(accountNumber, homeBranch, balance, riskLevel);
         }
         return investment;
     }
 
-    public Investment getInvestment() {
+    public Account getInvestment() {
         return this.investment;
     }
 
