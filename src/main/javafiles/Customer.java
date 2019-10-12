@@ -5,9 +5,6 @@ public class Customer {
     Chequings chequings = null;
     Savings savings = null;
     Investment investment = null;
-    int lowRisk = 0;
-    int mediumRisk = 1;
-    int highRisk = 2;
 
 
     public Customer(int customerId, String fName, String lName, String address, String postalCode, String phoneNumber, String email,
@@ -52,7 +49,7 @@ public class Customer {
         return this.savings;
     }
 
-    public Investment createInvestment(double balance, int accountNumber, String homeBranch, int riskLevel) {
+    public Investment createInvestment(double balance, int accountNumber, String homeBranch, RiskLevel riskLevel) {
         if (investment == null) {
             investment = new Investment(accountNumber, homeBranch, balance, riskLevel);
         }

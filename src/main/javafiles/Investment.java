@@ -9,10 +9,11 @@ public class Investment {
     double interestRate;
     Customer customer;
 
-    public Investment(int accountNumber, String homeBranch, double initialDeposit, int riskLevel) {
+    public Investment(int accountNumber, String homeBranch, double initialDeposit, RiskLevel riskLevel) {
         this.accountNumber = accountNumber;
         this.homeBranch = homeBranch;
         this.balance = initialDeposit;
+        investmentCalculator = new InvestmentCalculator();
         //calculate and set interest rate of investment based on risk level
         rLvl(riskLevel);
     }
@@ -24,14 +25,14 @@ public class Investment {
     }
 
     //set risk level interest using main.RiskLevel enum
-    public void rLvl(int rl) {
-        if (rl == 2) {
+    public void rLvl(RiskLevel rl) {
+        if (rl == RiskLevel.High) {
             this.interestRate = investmentCalculator.calculateHighRiskInterestRate();
         }
-        else if (rl == 1) {
+        else if (rl == RiskLevel.Medium) {
             this.interestRate = investmentCalculator.calculateMediumRiskInterestRate();
         }
-        else if (rl == 0) {
+        else if (rl == RiskLevel.Low) {
             this.interestRate = investmentCalculator.calculateLowRiskInterestRate();
         }
     }
